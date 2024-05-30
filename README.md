@@ -81,3 +81,4 @@ scoop config proxy 127.0.0.1:10086
     ```ps
     scoop install aria2 git 7zip
     ```
+
