@@ -4,7 +4,8 @@
 
 如何添加本仓库到 Scoop
 ---------------------------------
-运行以下命令:  
+运行以下命令:
+
 `scoop bucket add nekopaw https://github.com/NekoPawClub/scoop-apps`
 
 如何添加新的清单文件?
@@ -14,7 +15,7 @@
 
 
 ## 安装 scoop
-1. 设置powershell  
+1. 设置powershell
     ```ps
     set-executionpolicy remotesigned -s currentuser
     ```
@@ -34,7 +35,7 @@
 ```ps
 scoop help              #帮助
 scoop bucket known      #查看推荐仓库
-scoop bucket add 仓库名  #添加指定仓库       
+scoop bucket add 仓库名  #添加指定仓库
 scoop list              #查看当前已安装软件
 scoop info app          #查看软件信息
 scoop search app        #搜索软件
@@ -81,4 +82,4 @@ scoop config proxy 127.0.0.1:10086
     ```ps
     scoop install aria2 git 7zip
     ```
-
+ 
