@@ -5,8 +5,9 @@
 如何添加本仓库到 Scoop
 ---------------------------------
 运行以下命令:
-
-`scoop bucket add nekopaw https://github.com/NekoPawClub/scoop-apps`
+```ps
+scoop bucket add nekopaw https://github.com/NekoPawClub/scoop-apps
+```
 
 如何添加新的清单文件?
 ----------------------------------
@@ -82,4 +83,4 @@ scoop config proxy 127.0.0.1:10086
     ```ps
     scoop install aria2 git 7zip
     ```
- 
+  
