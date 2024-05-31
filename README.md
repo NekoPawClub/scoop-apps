@@ -16,20 +16,21 @@ scoop bucket add nekopaw https://github.com/NekoPawClub/scoop-apps
 
 
 ## 安装 scoop
-1. 设置powershell
+- 安装到指定目录 (D:\Scoop)
     ```ps
-    set-executionpolicy remotesigned -s currentuser
-    ```
-2. 安装到指定目录 (D:\Scoop)
-    ```ps
-    [environment]::setEnvironmentVariable('SCOOP','D:\Scoop','User')
+    #设置全局变量(需要管理员权限),个人电脑没必要设置
+    $env:SCOOP_GLOBAL='D:\Scoop'
+    [environment]::setEnvironmentVariable('SCOOP_GLOBAL',$env:SCOOP_GLOBAL,'Machine')
+    #设置用户变量
     $env:SCOOP='D:\Scoop'
+    [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
+    #安装scoop
+    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-    ```
-
-3. 验证 scoop 是否安装成功 (执行以下命令会打印 scoop 的指令列表)
-    ```ps
+    #验证安装
     scoop help
+    #安装aria2,将自动配置为scoop默认下载器
+    scoop install aria2
     ```
 
 ## scoop 常用命令
@@ -79,7 +80,7 @@ scoop config proxy 127.0.0.1:10086
     #从指定源安装应用程序 (不指定源将按照从上到下的优先级选择安装)
     scoop install nekopaw/ffmpeg
     ```
-- 一次安装多个软件 (建议优先安装aria2,后续scoop会自动调用aria2进行下载)
+- 一次安装多个软件
     ```ps
     scoop install aria2 git 7zip
     ```
