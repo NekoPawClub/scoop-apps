@@ -38,7 +38,7 @@ jobs:
       - name: Checkout Scoop
         uses: actions/checkout@main
         with:
-          repository: NekoPawClub/scoop-apps
+          repository: ScoopInstaller/Scoop
           path: 'scoop_core'
       - name: Init and Test
         shell: pwsh
