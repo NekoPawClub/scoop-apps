@@ -11,7 +11,12 @@
             "url": "https://www.uwe-sieber.de/files/UsbTreeView_Win32.zip"
         }
     },
-    "bin": "UsbTreeView.exe",
+    "shortcuts": [
+        [
+            "UsbTreeView.exe",
+            "UsbTreeView"
+        ]
+    ],
     "checkver": {
         "url": "https://www.uwe-sieber.de/usbtreeview_e.html",
         "regex": "USB Device Tree Viewer V([\\d.]+)"
