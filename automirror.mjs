@@ -42,7 +42,7 @@ const PACKAGES_DIR = 'packages';
 
 (async () => {
     console.log('TaskDir', TaskDir);
-    var updateCommit = [new Date().format("yyyy-MM-dd hh:mm:ss")];
+    var updateCommit = [];
 
     // 获取所有 JSON 文件
     const files = fs.readdirSync(SOURCES_DIR).filter(file => file.endsWith('.json'))
@@ -72,7 +72,7 @@ const PACKAGES_DIR = 'packages';
         json.version = matches[1];
 
         // 下载更新文件
-        var isUpdated = false;
+        let isUpdated = false;
         for (const fpath of json.filelist) {
             let url = fpath.replace('$version', matches[1]);
             for (const key in matches.groups) {
@@ -103,10 +103,12 @@ const PACKAGES_DIR = 'packages';
 
     // 提交更新日志
     if (updateCommit.length) {
+        const timestamp = new Date().format("yyyy-MM-dd hh:mm:ss");
+        updateCommit.unshift(timestamp);
         const logPath = 'README.md';
         var update_history = fs.readFileSync(logPath, 'utf-8');
         update_history = updateCommit.join('\n    ') + '\n' + update_history;
         fs.writeFileSync(logPath, update_history, 'utf-8');
-        fs.writeFileSync('commit.txt', updateCommit[0], 'utf-8');
+        fs.writeFileSync('commit.txt', timestamp, 'utf-8');
     }
 })();
