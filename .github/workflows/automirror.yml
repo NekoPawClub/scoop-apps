@@ -1,24 +1,22 @@
 name: AutoMirror
 
 on:
-  # 每天凌晨 0 点 UTC 触发 (对应北京时间 08:00)
   schedule:
     - cron: '0 0 * * *'
-  # 支持手动触发
   workflow_dispatch:
 
 jobs:
   automirror:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # 允许推送提交
+      contents: write
 
     steps:
       - name: 📂 检出仓库代码
         uses: actions/checkout@v4
         with:
           ref: mirror
-          lfs: true  # 启用 Git LFS 检出
+          lfs: true
 
       - name: ⚙️ 设置 Node.js 环境
         uses: actions/setup-node@v4
@@ -30,37 +28,39 @@ jobs:
 
       - name: 📝 配置 Git LFS 并跟踪大文件
         run: |
-          # 初始化 Git LFS
+          # 确保 Git LFS 已安装
           git lfs install --local
-
+          
           # 跟踪 packages 目录下的所有文件
           git lfs track "packages/*.*"
-
+          
           # 提交 .gitattributes 文件
-          if [ -f .gitattributes ]; then
-            git add .gitattributes
-          fi
+          git add .gitattributes
+          git commit -m "Update .gitattributes for LFS" || echo "No changes to .gitattributes"
 
-      - name: 📝 检查并提交更改
+      - name: 📝 添加大文件到 LFS
+        run: |
+          # 添加所有文件到 LFS
+          git add --all
+          
+          # 检查哪些文件将被提交
+          git status
+
+      - name: 📝 提交更改
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 配置 Git 提交者信息
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub_Actions"
 
-          # 处理 commit.txt
           if [ -f commit.txt ]; then
             COMMIT_MSG=$(cat commit.txt)
             rm commit.txt
-
-            # 添加所有更改 (包括 LFS 指针文件)
-            git add .
-
-            # 提交更改
+            
+            # 提交所有更改
             git commit -m "$COMMIT_MSG"
-
-            # 推送提交到 mirror 分支
+            
+            # 推送更改 (包括 LFS 对象)
             git push origin mirror
           else
             echo "未找到 commit.txt 跳过提交"
