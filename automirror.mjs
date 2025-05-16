@@ -57,7 +57,7 @@ const PACKAGES_DIR = 'packages';
         try {
             content = await fetch(json.checkver.url).then(res => res.text());
         } catch (e) {
-            console.error('Failed: ${json.checkver.url}\n', e.message);
+            console.error(`Failed: ${json.checkver.url}\n`, e.message);
             continue;
         }
         if (!content) continue;
@@ -103,7 +103,7 @@ const PACKAGES_DIR = 'packages';
 
     // 提交更新日志
     if (updateCommit.length) {
-        const logPath = 'readme.md';
+        const logPath = 'README.md';
         var update_history = fs.readFileSync(logPath, 'utf-8');
         update_history = updateCommit.join('\n    ') + '\n' + update_history;
         fs.writeFileSync(logPath, update_history, 'utf-8');
