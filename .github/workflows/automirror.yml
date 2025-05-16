@@ -15,7 +15,6 @@ jobs:
       - name: 📂 检出仓库代码
         uses: actions/checkout@v4
         with:
-          ref: mirror
           lfs: true
 
       - name: ⚙️ 设置 Node.js 环境
@@ -55,13 +54,13 @@ jobs:
 
           if [ -f commit.txt ]; then
             COMMIT_MSG=$(cat commit.txt)
-            rm commit.txt
+            rm -f commit.txt
             
             # 提交所有更改
             git commit -m "$COMMIT_MSG"
             
             # 推送更改 (包括 LFS 对象)
-            git push origin mirror
+            git push origin main
           else
             echo "未找到 commit.txt 跳过提交"
           fi
