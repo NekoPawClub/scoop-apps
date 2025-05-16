@@ -1,4 +1,4 @@
-name: Automirror Workflow
+name: AutoMirror
 
 on:
   # 每天凌晨 0 点 UTC 触发 (对应北京时间 08:00)
