@@ -87,6 +87,12 @@ const PACKAGES_DIR = 'packages';
             }
 
             const destPath = path.join(PACKAGES_DIR, url.match(/[^/\\]+$/)[0]);
+            // 确保目标目录存在
+            const destDir = path.dirname(destPath);
+            if (!fs.existsSync(destDir)) {
+                fs.mkdirSync(destDir, { recursive: true }); // 递归创建目录
+            }
+            // 执行文件下载
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
