@@ -79,14 +79,18 @@ const PACKAGES_DIR = 'packages';
                 url = url.replace(`$${key}`, matches.groups[key]);
             }
 
-            const spath = path.join(PACKAGES_DIR, url.match(/[^/\\]+$/)[0]);
+            const destPath = path.join(PACKAGES_DIR, url.match(/[^/\\]+$/)[0]);
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error(`HttpStatus(${response.status})`);
                 }
-                const fileStream = fs.createWriteStream(spath);
-                await pipeline(response.body, fileStream);
+                // 将响应内容读取为 ArrayBuffer
+                const arrayBuffer = await response.arrayBuffer();
+                // 将 ArrayBuffer 转换为 Buffer
+                const buffer = Buffer.from(arrayBuffer);
+                // 写入文件
+                fs.writeFileSync(destPath, buffer);
                 console.log('Update:', url);
                 isUpdated = true;
             } catch (err) {
