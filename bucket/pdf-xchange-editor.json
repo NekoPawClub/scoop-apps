@@ -8,10 +8,10 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.3x25.com/https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x64.zip"
+            "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip?download="
         },
         "32bit": {
-            "url": "https://github.3x25.com/https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x86.zip"
+            "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip?download="
         }
     },
     "persist": [
@@ -32,10 +32,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.3x25.com/https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x64.zip"
+                "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip?download="
             },
             "32bit": {
-                "url": "https://github.3x25.com/https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x86.zip"
+                "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip?download="
             }
         }
     }
