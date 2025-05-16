@@ -24,9 +24,6 @@ jobs:
         with:
           node-version: 24  # 根据需要修改 Node.js 版本
 
-      - name: 🔧 安装依赖 (如需)
-        run: npm install  # 如果脚本无依赖可删除此步骤
-
       - name: 🚀 运行自动化脚本
         run: node automirror.mjs
 
