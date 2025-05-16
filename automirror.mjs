@@ -53,7 +53,13 @@ const PACKAGES_DIR = 'packages';
         // 读取json内容
         let json = JSON.parse(fs.readFileSync(file, 'utf-8'));
         // 获取远程版本号
-        const content = await fetch(json.checkver.url).then(res => res.text());
+        var content = '';
+        try {
+            content = await fetch(json.checkver.url).then(res => res.text());
+        } catch (e) {
+            console.error('Failed: ${json.checkver.url}\n', e.message);
+            continue;
+        }
         if (!content) continue;
         const pattern = new RegExp(json.checkver.regex || '(.*)');
         const matches = content.match(pattern);
