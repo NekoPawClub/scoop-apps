@@ -1,0 +1,48 @@
+{
+    "version": "10.6.0.396",
+    "description": "A small, fast, and feature-rich PDF viewer/editor.",
+    "homepage": "https://www.pdf-xchange.com/product/pdf-xchange-editor",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.tracker-software.com/PDF_VE.pdf"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.pdf-xchange.com/downloads/PDFXEdit10_Portable_x64.zip",
+            "hash": "d08e3bc16570e3678c895ee47cb90fa48155f90ec7db8f189df508dd213012cd"
+        },
+        "32bit": {
+            "url": "https://www.pdf-xchange.com/downloads/PDFXEdit10_Portable_x86.zip",
+            "hash": "5bc411e7dacc406853cae1ce0fbd4ea0d7e920d60fd54e749c4f4ade45356694"
+        }
+    },
+    "persist": [
+        "History.dat",
+        "Settings.dat"
+    ],
+    "bin": "PDFXEdit.exe",
+    "shortcuts": [
+        [
+            "PDFXEdit.exe",
+            "PDF-XChange Editor"
+        ]
+    ],
+    "pre_install": [
+        "if(!(Test-Path \"$persist_dir\\History.dat\")) { New-Item \"$dir\\History.dat\" | Out-Null }",
+        "if(!(Test-Path \"$persist_dir\\Settings.dat\")) { New-Item \"$dir\\Settings.dat\" | Out-Null }"
+    ],
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/NekoPawClub/scoop-apps/refs/heads/main/packages/sources/pdf-xchange-editor.json",
+        "regex": "\"version\"[^\"]+\"([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x64.zip"
+            },
+            "32bit": {
+                "url": "https://raw.githubusercontent.com/NekoPawClub/scoop-apps/main/packages/PDFXEdit10_Portable_x86.zip"
+            }
+        }
+    }
+}

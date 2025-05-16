@@ -52,6 +52,8 @@ const SOURCES_DIR = 'packages/sources';
     for (const file of files) {
         // 读取json内容
         let json = JSON.parse(fs.readFileSync(file, 'utf-8'));
+        // 跳过不需要镜像更新的APP
+        if (!json.checkver) continue;
         // 获取远程版本号
         var content = '';
         var failmsg = '';

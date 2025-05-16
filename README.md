@@ -1,4 +1,4 @@
-# Scoop Apps [![Tests](https://github.com/NekoPawClub/scoop-apps/actions/workflows/ci.yml/badge.svg)](https://github.com/NekoPawClub/scoop-apps/actions/workflows/ci.yml) [![Excavator](https://github.com/NekoPawClub/scoop-apps/actions/workflows/excavator.yml/badge.svg)](https://github.com/NekoPawClub/scoop-apps/actions/workflows/excavator.yml)
+# Scoop Apps
 
 此仓库用于替换 Scoop Bucket 库中部分app下载速度慢的源。
 
