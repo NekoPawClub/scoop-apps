@@ -25,10 +25,6 @@
             "PDF-XChange Editor"
         ]
     ],
-    "pre_install": [
-        "if(!(Test-Path \"$persist_dir\\History.dat\")) { New-Item \"$dir\\History.dat\" | Out-Null }",
-        "if(!(Test-Path \"$persist_dir\\Settings.dat\")) { New-Item \"$dir\\Settings.dat\" | Out-Null }"
-    ],
     "checkver": {
         "url": "https://raw.githubusercontent.com/NekoPawClub/scoop-apps/refs/heads/main/packages/sources/pdf-xchange-editor.json",
         "regex": "\"version\"[^\"]+\"([\\d.]+)"
