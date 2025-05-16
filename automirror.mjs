@@ -54,13 +54,20 @@ const PACKAGES_DIR = 'packages';
         let json = JSON.parse(fs.readFileSync(file, 'utf-8'));
         // 获取远程版本号
         var content = '';
-        try {
-            content = await fetch(json.checkver.url).then(res => res.text());
-        } catch (e) {
-            console.error(`Failed: ${json.checkver.url}\n`, e.message);
+        var failmsg = '';
+        for (let retry = 3; retry--;) {
+            try {
+                content = await fetch(json.checkver.url).then(res => res.text());
+            } catch (err) {
+                failmsg = err;
+                continue;
+            }
+        }
+        if (!content) {
+            console.error(`Failed: ${json.checkver.url}\n`, failmsg);
             continue;
         }
-        if (!content) continue;
+
         const pattern = new RegExp(json.checkver.regex || '(.*)');
         const matches = content.match(pattern);
         // 比较版本
