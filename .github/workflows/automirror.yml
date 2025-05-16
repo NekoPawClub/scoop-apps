@@ -17,15 +17,29 @@ jobs:
       - name: 📂 检出仓库代码
         uses: actions/checkout@v4
         with:
-          ref: mirror  # 显式指定分支
+          ref: mirror
+          lfs: true  # 启用 Git LFS 检出
 
       - name: ⚙️ 设置 Node.js 环境
         uses: actions/setup-node@v4
         with:
-          node-version: 24  # 根据需要修改 Node.js 版本
+          node-version: 24
 
       - name: 🚀 运行自动化脚本
         run: node automirror.mjs
+
+      - name: 📝 配置 Git LFS 并跟踪大文件
+        run: |
+          # 初始化 Git LFS
+          git lfs install --local
+
+          # 跟踪 packages 目录下的所有文件
+          git lfs track "packages/*.*"
+
+          # 提交 .gitattributes 文件
+          if [ -f .gitattributes ]; then
+            git add .gitattributes
+          fi
 
       - name: 📝 检查并提交更改
         env:
@@ -39,11 +53,15 @@ jobs:
           if [ -f commit.txt ]; then
             COMMIT_MSG=$(cat commit.txt)
             rm commit.txt
+
+            # 添加所有更改 (包括 LFS 指针文件)
             git add .
+
+            # 提交更改
             git commit -m "$COMMIT_MSG"
-            
+
             # 推送提交到 mirror 分支
             git push origin mirror
           else
-            echo "未找到 commit.txt，跳过提交"
+            echo "未找到 commit.txt 跳过提交"
           fi
