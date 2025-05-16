@@ -1,6 +1,4 @@
 *.png -text
 *.zip -text
 *.exe -text
-packages/*.zip filter=lfs diff=lfs merge=lfs -text
-packages/*.rar filter=lfs diff=lfs merge=lfs -text
-packages/*.7z filter=lfs diff=lfs merge=lfs -text
+packages/* filter=lfs diff=lfs merge=lfs -text
