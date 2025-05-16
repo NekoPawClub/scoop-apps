@@ -31,8 +31,8 @@ jobs:
           # 确保 Git LFS 已安装
           git lfs install --local
           
-          # 跟踪 packages 目录下的所有文件
-          git lfs track "packages/*.*"
+          # 跟踪 packages 目录下的大文件
+          git lfs track "packages/*.zip"
           
           # 提交 .gitattributes 文件
           git add .gitattributes
