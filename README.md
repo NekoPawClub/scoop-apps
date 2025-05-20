@@ -58,23 +58,16 @@ scoop config proxy 127.0.0.1:10086
 ## 命令示例
 ```ps
 #查找应用程序
-scoop search ffmpeg
+scoop search gcc-arm-none-eabi
 Results from local buckets...
-Name                  Version          Source   Binaries
-----                  -------          ------   --------
-ffmpeg-shared         7.0.1            main
-ffmpeg                7.0.1            main
-clever-ffmpeg         3.2.6            extras
-ffmpeg-batch          3.0.6            extras
-ffmpeg-gyan-nightly   2024-05-27       versions
-ffmpeg-nightly        1716989350       versions
-ffmpeg-shared-4.4.1   4.4.1            versions
-ffmpeg-shared-nightly 115441           versions
-ffmpeg-yt-dlp         7.0.1-4-20240529 versions
-imagemagick-ffmpeg    7.1.0-53         versions
-ffmpeg                7.0.1            nekopaw
+Name              Version   Source  Binaries
+----              -------   ------  --------
+gcc-arm-none-eabi 14.2.rel1 extras
+gcc-arm-none-eabi 14.2.rel1 nekopaw
+
 #从指定源安装应用程序 (不指定源将按照从上到下的优先级选择安装)
-scoop install nekopaw/ffmpeg
+scoop install nekopaw/gcc-arm-none-eabi
+
 #一次安装多个应用程序
 scoop install git 7zip
 ```
