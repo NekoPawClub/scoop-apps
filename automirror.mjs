@@ -83,9 +83,9 @@ const SOURCES_DIR = 'packages/sources';
         // 下载更新文件
         let isUpdated = false;
         for (const fpath of json.filelist) {
-            let url = fpath.replace('$version', matches[1]);
+            let url = fpath.replaceAll('$version', matches[1]);
             for (const key in matches.groups) {
-                url = url.replace(`$${key}`, matches.groups[key]);
+                url = url.replaceAll(`$${key}`, matches.groups[key]);
             }
 
             const destPath = path.join(PACKAGES_DIR, url.match(/[^/\\]+$/)[0]);
