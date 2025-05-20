@@ -1,0 +1,11 @@
+{
+    "version": "10.6.0.396",
+    "checkver": {
+        "url": "https://www.pdf-xchange.com/product/pdf-xchange-editor",
+        "regex": "New Features Added in Version ([\\d.]+)"
+    },
+    "filelist": [
+        "https://www.pdf-xchange.com/downloads/PDFXEdit10_Portable_x64.zip",
+        "https://www.pdf-xchange.com/downloads/PDFXEdit10_Portable_x86.zip"
+    ]
+}

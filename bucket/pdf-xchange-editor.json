@@ -1,0 +1,42 @@
+{
+    "version": "10.6.0.396",
+    "description": "A small, fast, and feature-rich PDF viewer/editor.",
+    "homepage": "https://www.pdf-xchange.com/product/pdf-xchange-editor",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.tracker-software.com/PDF_VE.pdf"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip"
+        },
+        "32bit": {
+            "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip"
+        }
+    },
+    "persist": [
+        "History.dat",
+        "Settings.dat"
+    ],
+    "bin": "PDFXEdit.exe",
+    "shortcuts": [
+        [
+            "PDFXEdit.exe",
+            "PDF-XChange Editor"
+        ]
+    ],
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/NekoPawClub/scoop-apps/refs/heads/main/packages/sources/pdf-xchange-editor.json",
+        "regex": "\"version\"[^\"]+\"([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip"
+            }
+        }
+    }
+}
