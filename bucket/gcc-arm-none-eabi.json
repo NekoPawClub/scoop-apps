@@ -6,15 +6,11 @@
     "architecture": {
         "64bit": {
             "url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi.zip",
-            "hash": {
-                "url": "$url.sha256asc"
-            }
+            "hash": "f074615953f76036e9a51b87f6577fdb4ed8e77d3322a6f68214e92e7859888f"
         },
         "32bit": {
             "url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-mingw-w64-i686-arm-none-eabi.zip",
-            "hash": {
-                "url": "$url.sha256asc"
-            }
+            "hash": "6facb152ce431ba9a4517e939ea46f057380f8f1e56b62e8712b3f3b87d994e1"
         }
     },
     "env_add_path": "bin",
