@@ -9,9 +9,6 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip"
-        },
-        "32bit": {
-            "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip"
         }
     },
     "persist": [
@@ -33,9 +30,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/NekoPawClub/scoop-apps/raw/refs/heads/main/packages/PDFXEdit10_Portable_x86.zip"
             }
         }
     }
