@@ -15,7 +15,7 @@ jobs:
       - name: 📂 检出仓库代码
         uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: true  # 确保启用 LFS 支持
 
       - name: ⚙️ 设置 Node.js 环境
         uses: actions/setup-node@v4
@@ -25,42 +25,43 @@ jobs:
       - name: 🚀 运行自动化脚本
         run: node automirror.mjs
 
-      - name: 📝 配置 Git LFS 并跟踪大文件
+      - name: 🔍 检查文件变更
+        id: check_changes
         run: |
-          # 确保 Git LFS 已安装
-          git lfs install --local
-          
-          # 跟踪 packages 目录下的所有文件
-          git lfs track "packages/*"
-          
-          # 提交 .gitattributes 文件
-          git add .gitattributes
-          git commit -m "Update .gitattributes for LFS" || echo "No changes to .gitattributes"
-
-      - name: 📝 添加大文件到 LFS
-        run: |
-          # 添加所有文件到 LFS
-          git add --all
-          
-          # 检查哪些文件将被提交
-          git status
+          # 检查是否有实际文件变更
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "::set-output name=has_changes::false"
+            echo "没有检测到文件变更，跳过提交"
+          else
+            echo "::set-output name=has_changes::true"
+            echo "检测到文件变更，准备提交"
+          fi
 
       - name: 📝 提交更改
+        if: steps.check_changes.outputs.has_changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub_Actions"
-
+          # 配置 Git 用户
+          git config user.email "actions@github.com"
+          git config user.name "GitHub_Actions"
+          
+          # 仅添加已跟踪文件的变更 (避免添加未跟踪文件)
+          git add -u
+          
+          # 特殊添加 .gitattributes 以防被修改
+          git add .gitattributes 2>/dev/null || true
+          
+          # 提交消息处理
           if [ -f commit.txt ]; then
             COMMIT_MSG=$(cat commit.txt)
             rm -f commit.txt
-            
-            # 提交所有更改
-            git commit -m "$COMMIT_MSG"
-            
-            # 推送更改 (包括 LFS 对象)
-            git push origin main
           else
-            echo "未找到 commit.txt 跳过提交"
+            COMMIT_MSG="AutoMirror: 自动同步更新"
           fi
+          
+          # 创建提交
+          git commit -m "$COMMIT_MSG"
+          
+          # 推送变更 (LFS 文件会自动处理)
+          git push origin main
