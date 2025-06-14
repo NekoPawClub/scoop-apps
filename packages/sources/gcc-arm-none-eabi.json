@@ -5,7 +5,6 @@
         "regex": "arm-gnu-toolchain-([\\d.]+(rel\\d+)?)-mingw-w64-i686-arm-none-eabi.zip"
     },
     "filelist": [
-        "https://developer.arm.com/-/media/Files/downloads/gnu/$version/binrel/arm-gnu-toolchain-$version-mingw-w64-x86_64-arm-none-eabi.zip",
-        "https://developer.arm.com/-/media/Files/downloads/gnu/$version/binrel/arm-gnu-toolchain-$version-mingw-w64-i686-arm-none-eabi.zip"
+        "https://developer.arm.com/-/media/Files/downloads/gnu/$version/binrel/arm-gnu-toolchain-$version-mingw-w64-x86_64-arm-none-eabi.zip"
     ]
 }
