@@ -1,5 +1,5 @@
 {
-    "version": "10.6.0.396",
+    "version": "10.7.0.398",
     "checkver": {
         "url": "https://www.pdf-xchange.com/product/pdf-xchange-editor",
         "regex": "New Features Added in Version ([\\d.]+)"
